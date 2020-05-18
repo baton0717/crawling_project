@@ -171,27 +171,29 @@ def downloads(keyword):
 
  
     
-    img_links = [ tag.get('src') for tag in soup.select('img.rg_i')]
-    print(img_links[20])
-
-    
+    img_links = [ tag.get('src') for tag in soup.select('img.rg_i')]    
 
     #디렉토리 생성
     os.makedirs(f'static/download2/{keyword}',exist_ok=True)
-
     
+
 
     #다운로드
     for i, link in enumerate(img_links):
-        if str(link[:4]) == 'data':
-            imgdata = base64.b64decode(link.split(',')[1])
-            with open(f'static/download2/{keyword}/{i}.jpg', 'wb') as f:
-                f.write(imgdata)
+
+        try:
+            if str(link[:1]) == 'd':
+                imgdata = base64.b64decode(link.split(',')[1])
+                with open(f'static/download2/{keyword}/{i}.jpg', 'wb') as f:
+                    f.write(imgdata)
             
-        else:
-            res = requests.get(link)
-            with open(f'static/download2/{keyword}/{i}.jpg', 'wb') as f:
-                f.write(res.content)
+            else:
+                res = requests.get(link)
+                with open(f'static/download2/{keyword}/{i}.jpg', 'wb') as f:
+                    f.write(res.content)
+
+        except:
+            pass
 
 
     return render_template('down.html', img_links=img_links, keyword = keyword)
