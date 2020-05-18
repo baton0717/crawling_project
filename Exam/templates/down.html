@@ -1,0 +1,14 @@
+<h1>구글 검색 이미지 다운로드 -{{keyword}} </h1>
+
+<form action="/downloads/{{keyword}}" method="post">
+    <p><input type="submit" value="다운로드"></p>
+</form>
+
+
+
+
+<hr>
+{%for link in img_links%}
+<p>{{  link  }}</p>
+<div><img src = '{{link}}'></div>
+{% endfor%}

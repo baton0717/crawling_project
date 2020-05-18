@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>뉴스 랭킹</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>다음뉴스 랭킹</h1>
+        <h5><a href="/">메인화면으로 돌아가기</a></h5>
+        <div id="container">
+            <form action="/news/ranking" method="post">
+                <p><input type='date' name='date' placeholder='date'></p>
+                <p><input type='submit' value="확인">
+            </form>
+
+        <hr>
+            
+        <h2>실시간랭킹</h2>
+        <hr>
+
+        {% for s in soup %}
+        <p>{{ s }}</p>
+        <form action="/news/words" method="post">
+            <p><input type='submit' value='단어 카운트 조회하기'></p>
+        {% endfor %}
+      
+        </div>
+    </body>
+</html>

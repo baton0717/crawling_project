@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>뉴스단어카운트</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>단어 빈도수 조회결과</h1>
+        <h5><a href="/">메인화면으로 돌아가기</a></h5>
+        <h5><a href="/ranking">실시간뉴스로 돌아가기</a></h5>       
+        <h2>실시간랭킹</h2>
+        <hr>
+
+        {% for s in soup %}
+        <p>{{ s }}</p>
+        {% endfor %}
+      
+        </div>
+    </body>
+</html>
